@@ -1,0 +1,167 @@
+- Note:
+- This is an example configuration file for the MCP Governance Bridge.
+- It should not be used as-is in production environments.
+- Ensure to replace sensitive information like MongoDB URIs and AWS credentials with your own.
+- Not all features are implemented.
+
+{
+  "governance": {
+    "deployment_mode": "hybrid",
+    "base_port": 8173,
+    "mongodb_uri": "mongodb+srv://",
+    "enable_tracking": true,
+    "enable_dashboard": true,
+    "auth_disabled": true,
+    "transformation_strategy": "fastmcp_native"
+  },
+  "mcpServers": {
+    "MongoDB": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mongodb-mcp-server",
+        "--connectionString",
+        "mongodb+srv://"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "NODE_ENV": "production"
+      },
+      "governance": {
+        "mode": "unified",
+        "rate_limit": 100,
+        "hide_original_tools": true,
+        "governance_prefix": "governed",
+        "detailed_tracking": true,
+        "enable_tool_logging": true,
+        "log_inputs": true,
+        "log_outputs": true,
+        "max_log_size": 10000,
+        "security_level": "high",
+        "high_security": true,
+        "allowed_hours": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 20, 21, 22],
+        "blocked_patterns": [
+          "(password|secret|token|key)\\s*[:=]\\s*\\w+",
+          "(rm|del|delete)\\s+-rf",
+          "drop\\s+table",
+          "eval\\s*\\(",
+          "exec\\s*\\("
+        ]
+      }
+    },
+    "memory-mcp": {
+      "transport": "streamable-http",
+      "url": "http://localhost:8080/mcp/",
+      "governance": {
+        "mode": "separate_port",
+        "port": 8174,
+        "rate_limit": 200,
+        "hide_original_tools": false,
+        "governance_prefix": "mem_gov",
+        "detailed_tracking": false,
+        "enable_tool_logging": true,
+        "security_level": "low"
+      }
+    },
+    "aws-documentation-mcp-server": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["awslabs.aws-documentation-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_DOCUMENTATION_PARTITION": "aws",
+        "AWS_DOCUMENTATION_CACHE_TTL": "3600",
+        "AWS_DOCUMENTATION_MAX_RESULTS": "100"
+      },
+      "governance": {
+        "mode": "unified",
+        "rate_limit": 50,
+        "allowed_hours": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        "security_level": "low",
+        "enable_tool_logging": true,
+        "governance_prefix": "aws_docs",
+        "detailed_tracking": true
+      }
+    },
+    "aws-pricing-mcp-server": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["awslabs.aws-pricing-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "default",
+        "AWS_ACCESS_KEY_ID": "ASIA6I4AE",
+        "AWS_SECRET_ACCESS_KEY": "eAS4Q3WuISOKD",
+        "AWS_SESSION_TOKEN": "IQoJb3JpZ2luX2VjEAA",
+        "AWS_REGION": "us-east-1",
+        "AWS_PRICING_CACHE_TTL": "7200",
+        "AWS_PRICING_MAX_RESULTS": "500"
+      },
+      "governance": {
+        "mode": "separate_port",
+        "port": 8175,
+        "rate_limit": 25,
+        "allowed_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17],
+        "security_level": "high",
+        "high_security": true,
+        "enable_tool_logging": true,
+        "governance_prefix": "aws_pricing",
+        "detailed_tracking": true
+      }
+    },
+    "aws-core-mcp-server": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["awslabs.core-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_REGION": "us-east-1"
+      },
+      "governance": {
+        "mode": "unified",
+        "rate_limit": 75,
+        "security_level": "medium",
+        "enable_tool_logging": true,
+        "governance_prefix": "aws_core",
+        "detailed_tracking": true
+      }
+    },
+    "aws-location-mcp-server": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["awslabs.aws-location-mcp-server@latest"],
+      "env": {
+        "AWS_REGION": "us-east-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_PROFILE": "default",
+        "AWS_ACCESS_KEY_ID": "ASIA6I4AE",
+        "AWS_SECRET_ACCESS_KEY": "eAS4Q3WuISOKD",
+        "AWS_SESSION_TOKEN": "IQoJb3JpZ2luX2VjEAA",
+        "AWS_LOCATION_CACHE_TTL": "1800",
+        "AWS_LOCATION_MAX_RESULTS": "50"
+      },
+      "governance": {
+        "mode": "unified",
+        "rate_limit": 60,
+        "security_level": "medium",
+        "enable_tool_logging": true,
+        "governance_prefix": "aws_location",
+        "detailed_tracking": true
+      }
+    },
+    "tavily-remote-mcp": {
+      "transport": "streamable-http",
+      "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=tvly-dev-egbbEG",
+      "governance": {
+        "mode": "separate_port",
+        "port": 8176,
+        "rate_limit": 30,
+        "security_level": "medium",
+        "enable_tool_logging": true,
+        "governance_prefix": "tavily",
+        "detailed_tracking": true
+      }
+    }
+  }
+}
