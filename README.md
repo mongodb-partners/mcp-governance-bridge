@@ -317,7 +317,7 @@ The system maintains a comprehensive audit trail while providing real-time analy
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-org/mcp-governance-bridge.git
+git clone https://github.com/maap-partners/mcp-governance-bridge
 cd mcp-governance-bridge
 ```
 
