@@ -313,6 +313,16 @@ The system maintains a comprehensive audit trail while providing real-time analy
 - **UV package manager** (recommended) or pip
 - **Git** for cloning the repository
 
+## Example Usage
+
+### High Security Mode
+
+![alt text](high-security-mode.png)
+
+### Time Based Governance
+
+![alt text](time-based-governance.png)
+
 ## 🛠️ Installation
 
 1. **Clone the repository**
