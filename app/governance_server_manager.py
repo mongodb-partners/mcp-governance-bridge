@@ -94,7 +94,7 @@ class MCPGovernanceManager:
 
     async def _mount_server_with_governance(self, governance_server: FastMCP,
                                           server_name: str, server_config: dict) -> bool:
-        """Mount server using FastMCP proxy with middleware - SIMPLEST APPROACH!"""
+        """Mount server using FastMCP proxy with middleware"""
         try:
             logger.info(f"🔧 Mounting {server_name} with governance middleware...")
             
