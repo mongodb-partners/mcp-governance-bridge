@@ -646,7 +646,7 @@ uv run mypy .
 
 This project is licensed under the Apache License 2.0 - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [FastMCP](https://github.com/jlowin/fastmcp)
 - Dashboard powered by [Streamlit](https://streamlit.io/)
@@ -664,3 +664,17 @@ For support, please:
 ---
 
 **MCP Governance Bridge** - Secure, scalable, and comprehensive MCP server management solution.
+
+
+
+>**Note:** This repository contains a reference implementation intended for educational and exploratory purposes only. It is **not production-ready** in its current form.
+>
+> While the architecture and design patterns demonstrated here reflect best practices for building governance layers for MCP systems, the implementation may lack:
+>
+> * Comprehensive test coverage
+> * Robust error handling and validation
+> * Security hardening and access controls
+> * Performance optimizations for scale
+> * Long-term support or upgrade guarantees
+>
+> **Use this as a foundation** to guide your own production implementations, but ensure thorough validation and customization before deploying in real-world environments.
