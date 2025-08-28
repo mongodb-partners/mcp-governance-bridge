@@ -47,10 +47,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/mcp-governance-bridge"
-Documentation = "https://mcp-governance-bridge.readthedocs.io/"
-Repository = "https://github.com/your-org/mcp-governance-bridge.git"
-Issues = "https://github.com/your-org/mcp-governance-bridge/issues"
+Homepage = "https://github.com/mongodb-partners/mcp-governance-bridge"
+Documentation = "https://mongodb-partners.github.io/maap-framework/"
+Repository = "https://github.com/mongodb-partners/mcp-governance-bridge.git"
+Issues = "https://github.com/mongodb-partners/mcp-governance-bridge/issues"
 
 [project.scripts]
 mcp-governance = "app.main:main"
