@@ -327,7 +327,7 @@ The system maintains a comprehensive audit trail while providing real-time analy
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/maap-partners/mcp-governance-bridge
+git clone https://github.com/mongodb-partners/mcp-governance-bridge
 cd mcp-governance-bridge
 ```
 
@@ -341,9 +341,9 @@ pip install -r requirements.txt
 3. **Configure MongoDB**
 ```bash
 # Set environment variable
-export MONGODB_URI="mongodb+srv://username:password@cluster.mongodb.net/mcp_governance"
+export MONGODB_URI="mongodb+srv://<username>:<password>@cluster.mongodb.net/mcp_governance"
 # or create .env file
-echo "MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mcp_governance" > .env
+echo "MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/mcp_governance" > .env
 ```
 
 4. **Create configuration file**
