@@ -4,6 +4,9 @@ A comprehensive governance and monitoring solution for Model Context Protocol (M
 
 ## 🏗️ Architecture Overview
 
+![Architecture](docs/images/architecture.svg)
+
+
 ```mermaid
 graph TB
     subgraph "External Clients"
