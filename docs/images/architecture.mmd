@@ -1,0 +1,24 @@
+---
+title: MCP Governance Bridge architecture
+---
+flowchart LR
+  CL["MCP clients<br/>AI assistants, apps"]
+  subgraph br[MCP Governance Bridge]
+    FM["FastMCP governance server"]
+    GE["Governance engine<br/>time, rate limit, patterns"]
+    UT["Usage tracker"]
+  end
+  subgraph mcps[Managed MCP servers]
+    S1["Server 1<br/>stdio"]
+    S2["Server 2<br/>HTTP"]
+  end
+  DB[("MongoDB Atlas<br/>tool and governance logs")]
+  DASH["Streamlit dashboard"]
+  CL --> FM
+  FM --> GE
+  FM --> UT
+  FM --> S1
+  FM --> S2
+  GE --> DB
+  UT --> DB
+  DASH --> DB
